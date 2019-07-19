@@ -3,6 +3,8 @@ import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { AppSettings } from '../../../app.settings';
 import { Settings } from '../../../app.settings.model';
 import { Boletim } from './../../../models/Boletim';
+import { MessageService } from './../../ui/snack-bar/message.service';
+import { BoletimService } from './../../../service/boletim.service';
 
 @Component({
   selector: 'app-cadastro',
@@ -14,8 +16,9 @@ export class CadastroComponent implements OnInit {
 
   public form: FormGroup;
   public settings: Settings;
+  private msg = null;
 
-  constructor(public appSettings:AppSettings, public fb: FormBuilder) {
+  constructor(public appSettings:AppSettings, public fb: FormBuilder, private boletimService: BoletimService, private message: MessageService) {
     this.settings = this.appSettings.settings;
     this.form = this.fb.group({
       'proprietario': [null, Validators.compose([Validators.required, Validators.minLength(6)])],
@@ -39,8 +42,16 @@ export class CadastroComponent implements OnInit {
   ngOnInit(){}
 
   public onSubmit(values:Boletim):void {
+    
     if(this.form.valid){
-      console.log(values);
+      this.boletimService.add(values).subscribe(res=>{
+        this.message.openSnackBar('Boletim cadastrado com sucesso!', '');
+        console.log(res);
+      }, error=>{
+        this.message.openSnackBar(error, '');
+        console.log(error);
+        //this.msg = error.error.inscricao;
+      });
     }
   }
 

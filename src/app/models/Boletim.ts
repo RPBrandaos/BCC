@@ -1,5 +1,5 @@
 import { User } from 'src/app/models/User';
-export class Boletim{
+export class Boletim {
     id: number;
     inscricao: string;
     proprietario: string;
