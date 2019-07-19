@@ -1,0 +1,37 @@
+<app-content-header 
+    [icon]="'format_line_spacing'" 
+    [title]="'Consultar'" 
+    [desc]="'Boletim de Cadastro Complementar'"
+    [hideBreadcrumb]="false"
+    [hasBgImage]="true" 
+    [class]="'pb-4'"></app-content-header>
+
+<div fxLayout="column" class="p-2">
+    <div class="p-2"> 
+        <div fxLayout="column" class="mat-elevation-z8">           
+            <mat-form-field class="px-3 py-1">
+                <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Digite para filtrar todas as colunas">
+            </mat-form-field> 
+        </div>
+        <mat-table #table [dataSource]="dataSource" class="mat-elevation-z8">       
+            <ng-container matColumnDef="inscricao">
+                <mat-header-cell *matHeaderCellDef> Inscrição </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.inscricao}} </mat-cell>
+            </ng-container>         
+            <ng-container matColumnDef="proprietario">
+                <mat-header-cell *matHeaderCellDef> Proprietário </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.proprietario}} </mat-cell>
+            </ng-container>     
+            <ng-container matColumnDef="cpf">
+                <mat-header-cell *matHeaderCellDef> CPF </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.cpf}} </mat-cell>
+            </ng-container>        
+            <ng-container matColumnDef="aforamento">
+                <mat-header-cell *matHeaderCellDef> Aforamento </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.aforamento}} </mat-cell>
+            </ng-container>
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+    </div>
+</div>

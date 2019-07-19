@@ -1,0 +1,137 @@
+<app-content-header [icon]="'insert_drive_file'" [title]="'BCC'" [desc]="'Boletim de Cadastro Complementar'"
+    [hideBreadcrumb]="false" [hasBgImage]="true" [class]="'pb-4'"></app-content-header>
+
+<div fxLayout="column" class="p-2">
+    <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" fxFlex="90" fxFlex.gt-sm="30" fxFlex.sm="60"
+        class="mat-elevation-z6">
+        <div class="p-2">
+            <mat-card>
+                <mat-card-header fxLayoutAlign="center">
+                    <mat-card-subtitle>
+                        <h2>Dados do Proprietario</h2>
+                    </mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content>
+                    <mat-form-field class="w-100">
+                        <input matInput placeholder="Proprietario" formControlName="proprietario">
+                        <mat-error *ngIf="form.controls.proprietario.errors?.required">O nome do proprietário é
+                            obrigatório</mat-error>
+                        <mat-error *ngIf="form.controls.proprietario.hasError('minlength')">Nome completo não é longo o
+                            suficiente, mínimo de 6 caracteres</mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="w-100">
+                        <input matInput placeholder="Carta de Aforamento" formControlName="aforamento">
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input matInput placeholder="CPF" formControlName="cpf" maxlength="11">
+                        <mat-error *ngIf="form.controls.cpf.hasError('minlength')">O CPF deve ter 11 números
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input matInput placeholder="Inscrição Cadastral" formControlName="inscricao" maxlength="14">
+                        <mat-error *ngIf="form.controls.inscricao.errors?.required">A inscrição cadastral é obrigatório
+                        </mat-error>
+                        <mat-error *ngIf="form.controls.inscricao.hasError('minlength')">A inscrição deve ter 14 números
+                        </mat-error>
+                    </mat-form-field>
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <div class="p-2">
+            <mat-card>
+                <mat-card-header fxLayoutAlign="center">
+                    <mat-card-subtitle>
+                        <h2>Dados do Terreno</h2>
+                    </mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content>
+                    <mat-form-field class="w-100">
+                        <input matInput placeholder="Área do Terreno" formControlName="areaterreno">
+                        <mat-error *ngIf="form.controls.areaterreno.errors?.required">A área do terreno é obrigatório
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="w-100">
+                        <input matInput placeholder="Testada Principal" formControlName="testadaprincipal">
+                        <mat-error *ngIf="form.controls.testadaprincipal.errors?.required">A testada principal é
+                            obrigatório
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="w-100">
+                        <input matInput placeholder="Área da Unidade" formControlName="areaunidade">
+                        <mat-error *ngIf="form.controls.areaunidade.errors?.required">A área da unidade é obrigatório
+                        </mat-error>
+                    </mat-form-field>
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <div class="p-2">
+            <mat-card>
+                <mat-card-header fxLayoutAlign="center">
+                    <mat-card-subtitle>
+                        <h2>Limites da Área</h2>
+                    </mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content>
+                    <mat-form-field class="w-100">
+                        <input matInput placeholder="Ao leste" formControlName="leste">
+                        <mat-error *ngIf="form.controls.leste.errors?.required">A localização ao Leste é obrigatória
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="w-100">
+                        <input matInput placeholder="Ao norte" formControlName="norte">
+                        <mat-error *ngIf="form.controls.norte.errors?.required">A localização ao Norte é obrigatória
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="w-100">
+                        <input matInput placeholder="A oeste" formControlName="oeste">
+                        <mat-error *ngIf="form.controls.oeste.errors?.required">A localização ao Oeste é obrigatória
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="w-100">
+                        <input matInput placeholder="Ao sul" formControlName="sul">
+                        <mat-error *ngIf="form.controls.sul.errors?.required">A localização ao Sul é obrigatória
+                        </mat-error>
+                    </mat-form-field>
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <div class="p-2">
+            <mat-card>
+                <mat-card-header fxLayoutAlign="center">
+                    <mat-card-subtitle>
+                        <h2>Limites do Terreno</h2>
+                    </mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content>
+                    <mat-form-field class="w-100">
+                        <input matInput placeholder="Frente" formControlName="frente">
+                        <mat-error *ngIf="form.controls.frente.errors?.required">Informe a metragem de frente
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="w-100">
+                        <input matInput placeholder="Fundo" formControlName="fundo">
+                        <mat-error *ngIf="form.controls.fundo.errors?.required">Informe a metragem de fundo
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="w-100">
+                        <input matInput placeholder="Lado esquerdo" formControlName="esquerdo">
+                        <mat-error *ngIf="form.controls.esquerdo.errors?.required">Informe a metragem do lado esquerdo
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="w-100">
+                        <input matInput placeholder="Lado direito" formControlName="direito">
+                        <mat-error *ngIf="form.controls.direito.errors?.required">Informe a metragem do lado direito
+                        </mat-error>
+                    </mat-form-field>
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <div class="p-2">
+            <mat-card>
+                <mat-card-content>
+                    <button mat-raised-button color="primary" class="m-1" type="submit">Salvar</button>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </form>
+</div>

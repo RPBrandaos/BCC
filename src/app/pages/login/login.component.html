@@ -1,0 +1,32 @@
+<mat-sidenav-container class="h-100">
+    <div fxLayout="row" fxLayoutAlign="center center" class="h-100">
+        <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" fxFlex="90" fxFlex.gt-sm="30" fxFlex.sm="60"
+            class="mat-elevation-z6">
+            <app-content-header [icon]="'exit_to_app'" [title]="'Login'" [hideBreadcrumb]="true" [hasBgImage]="true"
+                [class]="'py-4'"></app-content-header>
+            <div class="p-3">
+                <mat-error>{{msg}}</mat-error>
+                <a mat-button routerLink="/register" color="accent" class="w-100">Não tem uma conta? Cadastre-se
+                    agora!</a>
+                <mat-form-field class="w-100">
+                    <mat-icon matPrefix class="mat-icon-sm mb-2 mr-2 secondary-text-color">mail</mat-icon>
+                    <input matInput placeholder="Email" formControlName="email">
+                    <mat-error *ngIf="form.controls.email.errors?.required">E-mail é obrigatório</mat-error>
+                    <mat-error *ngIf="form.controls.email.hasError('invalidEmail')">Endereço de email invalido
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="w-100">
+                    <mat-icon matPrefix class="mat-icon-sm mb-2 mr-2 secondary-text-color">lock</mat-icon>
+                    <input matInput placeholder="Password" formControlName="password" type="password">
+                    <mat-error *ngIf="form.controls.password.errors?.required">Senha requerida</mat-error>
+                    <mat-error *ngIf="form.controls.password.hasError('minlength')">A senha não é longa o suficiente,
+                        com no mínimo 6 caracteres</mat-error>
+                </mat-form-field>
+                <mat-slide-toggle formControlName="rememberMe" class="my-2">Mantenha-me conectado</mat-slide-toggle>
+                <button mat-raised-button color="primary" class="mat-elevation-z6 w-100 mt-3"
+                    type="submit">Entrar</button>
+            </div>
+        </form>
+    </div>
+    <!--<img style="height: 30px;" *ngIf="loading" src="assets/img/loading-gif.gif">-->
+</mat-sidenav-container>
